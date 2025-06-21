@@ -88,6 +88,23 @@ export const apiService = {
       throw new Error('Failed to delete disaster');
     }
   },
+  async getDisasterTypes() {
+    // In a real app, this would fetch from a /api/disaster-types endpoint
+    return Promise.resolve([
+      'Flood', 'Earthquake', 'Wildfire', 'Hurricane',
+      'Tornado', 'Drought', 'Tsunami', 'Industrial Accident'
+    ]);
+  },
+  async getSeverityLevels() {
+    // This could also be fetched from the backend
+    return Promise.resolve([
+      { value: 1, label: 'Low' },
+      { value: 2, label: 'Minor' },
+      { value: 3, label: 'Moderate' },
+      { value: 4, label: 'Severe' },
+      { value: 5, label: 'Extreme' }
+    ]);
+  },
   async extractLocation(description) {
     try {
       const response = await fetch(`${API_BASE_URL}/geocoding/extract-location`, {
